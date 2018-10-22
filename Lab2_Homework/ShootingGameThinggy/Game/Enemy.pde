@@ -35,7 +35,7 @@ class Enemy {
       float distbtwn = dist(b_.x, b_.y, this.x, this.y );
       if(distbtwn < 15)
         enemies.remove(this);
-        bullets.remove(b_);
+        //bullets.remove(b_);
     }
   }
 }
