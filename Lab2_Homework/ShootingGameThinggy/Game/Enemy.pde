@@ -1,41 +1,50 @@
 class Enemy {
-  // global variables
-  int x;
-  int y;
-  float dx;
+  // class variables
+  PVector enemy;                                                          // pos of enemy
+  float dx;                                                               // velocity
 
-  // constructor
   Enemy(float x, float y) {
-    this.x = snapToGrid(x);
-    this.y = snapToGrid(y);
-    dx = 0.2*gsz;
+    enemy = new PVector( snapToGrid(x), snapToGrid(y) );
+    dx = 10;
   }
 
-  int snapToGrid(float k) {
-    float gszm1 = 1.0/gsz;
-    return round(k*gszm1)*gsz;
+  // gridding function
+  float snapToGrid(float k) {
+    float snap = 1.0/gsz;
+    return round(k*snap)*gsz;
   }
 
-  void movement() {
-    x += dx;
-    if(x>width-gsz || x < gsz)
-     dx *= -1;
+  // check if bullet hit
+  boolean checkHit() {
+    for ( int i = 0; i < bullets.size(); i++ ) {
+      Bullet b = bullets.get(i);
+      float distbtwn = dist(b.bullet.x, b.bullet.y, enemy.x, enemy.y);
+      if (distbtwn < 15) {
+        bullets.remove(b);
+        return true;
+      }
+    }
+    return false;
+  }
+
+  // remove the enemies and bullets
+  void deathByBullet() {
+    enemies.remove(this);
+  }
+
+  // move the targets
+  void move() {
+    enemy.x += dx;
+    if (enemy.x>width-gsz || enemy.x < gsz) {
+      dx *= -1;
+      enemy.y = enemy.y + gsz;
+    }
   }
 
   void show() {
     fill(255);
     noStroke();
-    ellipse(x, y, gsz*0.3, gsz*0.3);
-    movement();
-  }
-
-  void death() {
-    for(int i = 0; i< bullets.size(); i++){
-      Bullet b_ = bullets.get(i);
-      float distbtwn = dist(b_.x, b_.y, this.x, this.y );
-      if(distbtwn < 15)
-        enemies.remove(this);
-        //bullets.remove(b_);
-    }
+    ellipse(enemy.x, enemy.y, gsz*0.3, gsz*0.3);
+    move();
   }
 }
