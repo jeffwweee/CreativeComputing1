@@ -8,7 +8,7 @@ to try and help. </br>
 
 # CONTACT
 You can contact me @ the following socials:</br>
-Discord   : @Jeffwweee#8583</br>
+Discord&nbsp;: @Jeffwweee#8583</br>
 E-mail    : jeffreyjae96@gmail.com</br>
 Facebook  : https://www.facebook.com/jeffwweee </br>
 Instagram : @Jeffwweee </br>
