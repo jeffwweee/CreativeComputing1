@@ -34,12 +34,17 @@ class Snake {
   }
 
   // check endGame
-  boolean endGame() {
-    PVector head = body.get(body.size()-1).copy();
-
+  boolean endGameWall() {
+    PVector head = myCopy(body.get(body.size()-1));
     // hits border
     if (head.x>width-1 || head.y>height-1 || head.x<0 || head.y<0)
       return true;
+    return false;
+  }
+
+  boolean endGameSelf() {
+    PVector head = myCopy(body.get(body.size()-1));
+    // or it hits himself
     for (int i = 2; i < body.size() - 1; i++) {
       PVector part = body.get(i);
       if (part.x == head.x && part.y == head.y)
@@ -62,7 +67,7 @@ class Snake {
   // this method will create a new object for the arraylist after eating the food
   void grow() {
     len++;
-    PVector head = body.get(body.size()-1).copy();
+    PVector head = myCopy(body.get(body.size()-1));
     body.add(head);
   }
 
@@ -77,6 +82,8 @@ class Snake {
     //body.get(0).y += dy;
   }
   // copy method for 3 and below
+  // copy the 1st guy of the snake, return as a PVector to be stored
+  // as another part of the snake
   PVector myCopy(PVector o) {
     PVector c = new PVector(o.x, o.y);
     return c;
