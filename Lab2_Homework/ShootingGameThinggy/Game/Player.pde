@@ -1,26 +1,27 @@
 class Player {
   // class variables
   PVector ship;                    // position of the ship
-  int sh; int sw;                  // the ship's height clearance
+  int sh; 
+  int sw;                  // the ship's height clearance
 
   Player( int h, int w ) {
     ship = new PVector( floor( w/2 ), floor( 3.5*h/4 ) );
     sw = 30;
     sh = 15;
   }
-  
+
   // adds a new bullet into the arraylist everytime shoot is invoked
   void shoot() {
     Bullet b = new Bullet(ship.x, ship.y, -10);
     bullets.add(b);
   }
-  
+
   // check if hit by enemy
   boolean checkHit() {
-    for( int i = 0; i < enemies.size(); i++ ) {
+    for ( int i = 0; i < enemies.size(); i++ ) {
       Enemy e = enemies.get(i);
       float distbtwn = dist(e.enemy.x, e.enemy.y, ship.x, ship.y);
-      if(distbtwn < 15)
+      if (distbtwn < 15)
         return true;
     }
     return false;
@@ -29,14 +30,14 @@ class Player {
   void move() {
     // check if keypress == true, then check if the player is in the boundaries
     // of gsz and width-gsz. then it will allow the ship to move.
-    if( l )
-      if( ship.x > gsz)
+    if ( l )
+      if ( ship.x > gsz)
         ship.x -= 10;
-    if( r )
-      if( ship.x < width-gsz )
+    if ( r )
+      if ( ship.x < width-gsz )
         ship.x += 10;
   }
-  
+
   // display the ship
   void show() {
     noFill();
