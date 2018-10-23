@@ -32,15 +32,15 @@ int g = 10;
 int gsz = sz/g;
 
 // declaring objects
-ArrayList<Bullet> bullets;     // an array of bullets. 
-ArrayList<Enemy> enemies;      // an array of enemies
-Player player;                 // the player's ship object
+ArrayList<Bullet> bullets;                            // an array of bullets. 
+ArrayList<Enemy> enemies;                             // an array of enemies
+Player player;                                        // the player's ship object
 
 // other variables
-boolean r;                     // bool for key a
-boolean l;                     // bool for key d
+boolean r;                                            // bool for key a
+boolean l;                                            // bool for key d
 
-int num = 10;                  // number of enemies
+int num = 10;                                         // number of enemies
 
 void setup() {
   size(500, 500);
@@ -67,12 +67,12 @@ void initEnemy() {
 // Checking for keyPress, returns true if pressed
 // can just do a switch statement for key, it should work the same way
 void keyPressed() {
-  if ( keyCode == RIGHT)              // checks if keypressed is right arrow
+  if ( keyCode == RIGHT)                             // checks if keypressed is right arrow
     r = true;
-  if ( keyCode == LEFT )              // checks if keypressed is left arrow
+  if ( keyCode == LEFT )                             // checks if keypressed is left arrow
     l = true;
   if ( key == ' ' )
-    player.shoot();                  // adds into bullets into al, then shoots out line
+    player.shoot();                                  // adds into bullets into al, then shoots out line
 }
 
 void keyReleased() {
