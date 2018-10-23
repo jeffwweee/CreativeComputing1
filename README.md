@@ -8,9 +8,9 @@ to try and help. </br>
 
 # CONTACT
 You can contact me @ the following socials:</br>
-Discord&nbsp;&nbsp;&nbsp;&nbsp;: @Jeffwweee#8583</br>
-E-mail&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: jeffreyjae96@gmail.com</br>
-Facebook&nbsp;&nbsp;: https://www.facebook.com/jeffwweee </br>
-Instagram&nbsp;: @Jeffwweee </br>
-Twitter&nbsp;&nbsp;&nbsp;: @Jeffwweee </br>
-Telegram&nbsp;&nbsp;: @Jeffwweee </br>
+Discord: @Jeffwweee#8583</br>
+E-mail: jeffreyjae96@gmail.com</br>
+Facebook: https://www.facebook.com/jeffwweee </br>
+Instagram: @Jeffwweee </br>
+Twitter: @Jeffwweee </br>
+Telegram: @Jeffwweee </br>
