@@ -36,13 +36,13 @@ class Snake {
   // check endGame
   boolean endGame() {
     PVector head = body.get(body.size()-1).copy();
-    
+
     // hits border
     if (head.x>width-1 || head.y>height-1 || head.x<0 || head.y<0)
       return true;
-    for(int i = 2; i < body.size() - 1; i++){
+    for (int i = 2; i < body.size() - 1; i++) {
       PVector part = body.get(i);
-      if(part.x == head.x && part.y == head.y)
+      if (part.x == head.x && part.y == head.y)
         return true;
     }
     return false;
@@ -68,7 +68,7 @@ class Snake {
 
   // refreshes new coordinates for the snake
   void update() {
-    PVector head = body.get(body.size()-1).copy();
+    PVector head = myCopy(body.get(body.size()-1));
     body.remove(0);
     head.x += dx;
     head.y += dy;
@@ -76,7 +76,11 @@ class Snake {
     //body.get(0).x += dx;
     //body.get(0).y += dy;
   }
-
+  // copy method for 3 and below
+  PVector myCopy(PVector o) {
+    PVector c = new PVector(o.x, o.y);
+    return c;
+  }
   // displaying the snake
   void show() {
     for (int i = 0; i<= len; i++) {
