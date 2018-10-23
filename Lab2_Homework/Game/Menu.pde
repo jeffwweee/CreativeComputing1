@@ -1,3 +1,6 @@
+// a lilttle overkill, but this is a object class for menus
+// where i store the methods, and the source files for the menu.
+
 class Menu {
   // still image for menus
   PImage main;
