@@ -54,6 +54,7 @@ void setup() {
   reset();
 }
 
+// this will reset the snake to default. 
 void reset() {
   snake = new Snake(w, w);
   foodLoc();
@@ -86,6 +87,8 @@ void keyPressed() {
   }
 }
 
+// this contains the codes for the game. 
+// use a calling method to keep switch statement simple
 void game(){
   background(220);
 
@@ -96,7 +99,7 @@ void game(){
     snake.update();
     snake.show();
 
-    if (snake.endGame()) {
+    if (snake.endGameWall() || snake.endGameSelf()) {
       state = 2;
     }
 
@@ -112,6 +115,7 @@ void game(){
     }
 }
 
+// main method
 void draw() {
   switch(state) {
   case MAIN_MENU : // state = 0
