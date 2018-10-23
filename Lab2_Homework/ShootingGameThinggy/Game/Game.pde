@@ -13,7 +13,7 @@
  
  Updates:
  1) enemies will move forward everytime they bounce off the walls. Once they hit you
-    game over.
+ game over.
  2) Game ends when all enemies are cleared
  
  Later itereations (to be implemented)
@@ -94,7 +94,7 @@ void allEmEnemies() {
   for ( int i = 0; i < enemies.size(); i++ ) {
     Enemy e = enemies.get(i);
     e.show();
-    if(e.checkHit())
+    if (e.checkHit())
       e.deathByBullet();
   }
 }
@@ -113,8 +113,8 @@ void draw() {
 
   allEmShots();
   allEmEnemies();
-  
-  if( enemies.size() == 0 ){
+
+  if ( enemies.size() == 0 ) {
     fill( 255, 0, 0 );
     rect( 0, 0, width, height );
     noLoop();
