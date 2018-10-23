@@ -1,10 +1,10 @@
 # CreativeComputing1
 Location to store my Processing 3 codes for CC1
 
-<!-- README -->
+# README
 
 Do drop me a text if there is anything unsure, let me know which file, which line, and I will try my best
-to try and help. 
+to try and help. </br>
 
 <!-- CONTACT ME -->
 You can contact me @ the following socials:
