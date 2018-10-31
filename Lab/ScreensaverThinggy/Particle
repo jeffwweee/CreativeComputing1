@@ -1,0 +1,58 @@
+class Particle {
+  PVector pos;
+  PVector vel;
+  PVector acc;
+  boolean firework;
+  float lifespan = 255;
+  int hue;
+
+  Particle(float x, float y, int hue, boolean firework) {
+    this.firework = firework;
+    pos = new PVector(x, y);
+
+    if (firework) {
+      vel = new PVector(0, random(-20, -10));
+    } else {
+      vel = PVector.random2D();      // provides a random x y for PVectors
+      vel.mult(random(2, 10));       // scale it by another random number 2<n<10
+    }
+
+    acc = new PVector(0, 0);
+    this.hue = hue;
+  }
+
+  void applyForce(PVector force) {   // Physics for the particles, where force may include
+    acc.add(force);                  // gravity, wind, etc, etc. in this case, only
+  }                                  // gravity is applied as an external force
+
+  boolean done() {
+    if (lifespan < 0) {
+      return true;
+    } else
+      return false;
+  }
+
+  void update() {
+    if (!this.firework) {            
+      vel.mult(0.90);                // scale the velocity of the explosion by 10%
+      lifespan -= 4;                 // fade the other particles after exploding
+    }
+    vel.add(acc);                    // adds the acceleration accumulated
+    pos.add(vel);                    // moves the position based on velocity
+    acc.mult(0);                     // clear the accelation each frame
+  }
+
+  void show() {
+    if (!firework) {
+      strokeWeight(2);
+      stroke(hue, 255, 255, lifespan);
+    } else {
+      strokeWeight(4);
+      stroke(hue, 255, 255);
+    }
+    pushMatrix();
+    translate(pos.x, pos.y);
+    point (0, 0);
+    popMatrix();
+  }
+}
