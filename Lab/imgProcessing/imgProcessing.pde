@@ -1,55 +1,57 @@
 PImage img;
-//int[][] pos;
-int sc = 20;
+// variable used to control the intensity of pixelated effect
+int grid = 10; 
 
 void setup() {
   size(200, 200);
   img = loadImage("sunflower.jpg");
-  //pos = getArr();
 }
 
 void draw() {
-  loadPixels(); 
-  // Since we are going to access the image's pixels too  
-  img.loadPixels(); 
-  for (int y = 0; y < height; y++) {
-    for (int x = 0; x < width; x++) {
-      int loc = x + y*width;
+  // anytime we need to manipulate the pixels array, we need to call this
+  loadPixels();
+  img.loadPixels();
 
-      // The functions red(), green(), and blue() pull out the 3 color components from a pixel.
-      float r = red(img.pixels[loc]);
-      float g = green(img.pixels[loc]);
-      float b = blue(img.pixels[loc]);
+  // moves x and y value by grid
+  // Loops through every pixel column
+  for (int x = 0; x < width; x+=grid) {
+    // Loops through every pixel rows
+    for (int y = 0; y < height; y+=grid) {
+      // For any given X, Y point in the window, location in 1D pixel array is
+      int currLocation = x + y*width;
 
-      if (loc > 0 && loc < height*width -1) {
-          for (int i = 0; i < sc; i+=sc) {
-            r += red(img.pixels[loc + i]);
-            g += green(img.pixels[loc + i]);
-            b += blue(img.pixels[loc + i]);
+      // Get the RGB values from the currLocation
+      float r = red(img.pixels[currLocation]);
+      float g = green(img.pixels[currLocation]);
+      float b = blue(img.pixels[currLocation]);
+
+      // At the current location, get the pixels within the size of the grid
+      // get the individual RGB values.
+      for (int i = x; i < x+grid; i++) {
+        for (int j = y; j < y+grid; j++) {
+          int newLocation = i + j*width;
+          if (newLocation < width*height-width-grid) {
+            r += red(img.pixels[newLocation]);
+            g += green(img.pixels[newLocation]);
+            b += blue(img.pixels[newLocation]);
           }
-          for (int j = width; j < width+sc; j++) {
-            if ( loc < (width*height)-width-sc) {
-              r += red(img.pixels[loc + j]);
-              g += green(img.pixels[loc + j]);
-              b += blue(img.pixels[loc + j]);
-            }
-          }
+        }
       }
 
-      float avgr = r/sc;
-      float avgg = g/sc;
-      float avgb = b/sc;
+      // calculate new RGB values, average of the grid size
+      float r_ = r/(grid*grid);
+      float g_ = g/(grid*grid);
+      float b_ = b/(grid*grid);
 
-      fill(avgr, avgg, avgb);
-      noStroke();
-      
-      
-      for (int i = 0; i<sc; i+=sc) {
-        for (int j = width; j < width+sc; j++) {
-          pixels[loc+i] = color (avgr, avgg, avgb);
+      // display the pixels
+      for (int i = x; i<x+grid; i++) {
+        for (int j = y; j<y+grid; j++) {
+          int newLocation = i + j*width;
+          pixels[newLocation] = color (r_, g_, b_);
         }
       }
     }
   }
+
   updatePixels();
 }
